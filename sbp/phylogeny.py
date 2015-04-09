@@ -18,6 +18,29 @@ def phylogenetic_basis(treenode):
     treenode : skbio.TreeNode
         Phylogenetic tree.  MUST be a bifurcating tree
 
+    Returns
+    -------
+    basis : dict, {str, np.array}
+        Returns a set of orthonormal bases in the Aitchison simplex
+        corresponding to the phylogenetic tree.
+        Each basis is indexed by the node name
+
+    Raises
+    ------
+    ValueError
+        The tree doesn't contain two branches
+    ValueError
+        The tree doesn't have unique node names
+
+    Examples
+    --------
+    >>> tree = "((b,c)a, d)root;"
+    >>> t = TreeNode.read(StringIO(tree))
+    >>> phylogenetic_basis(t)
+    {'a': array([ 0.57597535,  0.14002925,  0.28399541]),
+     'root': array([ 0.43595159,  0.43595159,  0.12809681])}
+
+
     """
     basis, _ =  _sequential_binary_partition(treenode)
     return basis
