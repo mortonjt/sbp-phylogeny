@@ -47,6 +47,9 @@ def _sequential_binary_partition(treenode, left_step=0, right_step=0):
     ------
     ValueError
         The tree doesn't contain two branches
+    ValueError
+        The tree doesn't have unique node names
+
     """
     if len(treenode.children) == 0:
         return {}, 1
