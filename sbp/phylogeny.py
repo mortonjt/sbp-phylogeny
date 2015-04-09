@@ -63,7 +63,6 @@ def _sequential_binary_partition(treenode, left_step=0, right_step=0):
     right_basis, s = _sequential_binary_partition(treenode.children[1],
                                                   left_step = left_step,
                                                   right_step = right_step + 1)
-    print "Node: %s"%treenode.name,"r=%d,s=%s"%(r, s)
     a = np.sqrt(s / (r*(r+s)))
     b = -1*np.sqrt(r / (s*(r+s)))
     base = clr_inv([0]*right_step + [a]*r + [b]*s + [0]*left_step)
